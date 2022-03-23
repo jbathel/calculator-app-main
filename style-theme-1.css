@@ -1,0 +1,307 @@
+/* ------------------- */
+/* Variables           */
+/* ------------------- */
+
+html {
+  /* Font-size */
+  --fs-400: 2rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* Font-families */
+  --ff-sans-serif: 'Spartan', sans-serif;
+
+  /* Colors */
+  --bg-main: hsl(222, 26%, 31%);
+  --bg-toggle: hsl(223, 31%, 20%);
+  --bg-keypad: hsl(223, 31%, 20%);
+  --bg-screen: hsl(224, 36%, 15%);
+
+  --key-bg-blue: hsl(225, 21%, 49%);
+  --key-shadow-blue: hsl(224, 28%, 35%);
+
+  --key-bg-red: hsl(6, 63%, 50%);
+  --key-shadow-red: hsl(6, 70%, 34%);
+
+  --key-bg-gray: hsl(30, 25%, 89%);
+  --key-shadow-gray: hsl(28, 16%, 65%);
+
+  --text-dark: hsl(221, 14%, 31%);
+  --text-light: #fff;
+}
+
+html[data-theme='white'] {
+  --bg-main: hsl(0, 0%, 90%);
+  --bg-toggle: hsl(0, 5%, 81%);
+  --bg-keypad: hsl(0, 5%, 81%);
+  --bg-screen: hsl(0, 0%, 93%);
+
+  --key-bg-blue: hsl(185, 42%, 37%);
+  --key-shadow-blue: hsl(185, 58%, 25%);
+
+  --key-bg-red: hsl(25, 98%, 40%);
+  --key-shadow-red: hsl(25, 99%, 27%);
+
+  --key-bg-gray: hsl(45, 7%, 89%);
+  --key-shadow-gray: hsl(35, 11%, 61%);
+
+  --text-dark: hsl(60, 10%, 19%);
+  --text-light: #fff;
+}
+
+html[data-theme='purple'] {
+  --bg-main: hsl(268, 75%, 9%);
+  --bg-toggle: hsl(268, 71%, 12%);
+  --bg-keypad: hsl(268, 71%, 12%);
+  --bg-screen: hsl(268, 71%, 12%);
+
+  --key-bg-blue: hsl(281, 89%, 26%);
+  --key-shadow-blue: hsl(285, 91%, 52%);
+
+  --key-bg-red: hsl(176, 100%, 44%);
+  --key-shadow-red: hsl(177, 92%, 70%);
+
+  --key-bg-gray: hsl(268, 47%, 21%);
+  --key-shadow-gray: hsl(290, 70%, 36%);
+
+  --text-dark: hsl(52, 100%, 62%);
+  --text-light: #fff;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+/* Box Sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Reset Margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-family: var(--ff-sans-serif);
+}
+
+/* Set up the body */
+body {
+  background-color: var(--bg-main);
+  font-family: var(--ff-sans-serif);
+  font-size: var(--fs-400);
+  color: var(--text-light);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Adjust padding between sections */
+/* Makes form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove animations for people who've turn them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------- */
+/* Utility Classes     */
+/* ------------------- */
+
+.wrapper {
+  max-width: 375px;
+  margin: 0 auto;
+  padding-block: 1em;
+}
+
+.input-wrapper {
+  background-color: var(--bg-keypad);
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0.5em;
+
+  display: grid;
+  gap: 0.45em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    'button button button button'
+    'button button button button'
+    'button button button button'
+    'button button button button'
+    'reset reset equal equal';
+}
+
+/* ------------------- */
+/* Components          */
+/* ------------------- */
+
+/* Title - Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-block: 1em;
+}
+
+.theme {
+  /* padding-right: 0; */
+  /* margin-right: 0; */
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  column-gap: 1em;
+  width: 50%;
+  font-size: var(--fs-200);
+  text-transform: uppercase;
+}
+
+.theme-toggle {
+  width: 40%;
+  display: grid;
+  /* column-gap: 1em; */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'p-1 p-2 p-3'
+    'toggle toggle toggle';
+  justify-content: end;
+  /* text-align: j; */
+}
+
+#p-1 {
+  grid-area: p-1;
+  justify-self: center;
+}
+#p-2 {
+  grid-area: p-2;
+  justify-self: center;
+}
+#p-3 {
+  grid-area: p-3;
+
+  /* justify-self: stretch; */
+  justify-self: center;
+}
+
+.theme-toggle input {
+  width: 100%;
+  grid-area: toggle;
+  justify-self: center;
+}
+
+.theme-toggle p {
+  align-self: end;
+}
+
+input[type='range'] {
+  width: 100%;
+  /* height: 100%; */
+  padding: 0.25em;
+  background: var(--bg-toggle);
+  border-radius: 50px;
+}
+
+input[type='range']::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background: var(--key-bg-red);
+  cursor: ew-resize;
+  /*   box-shadow: 0 0 2px 0 #555; */
+  transition: background 0.3s ease-in-out;
+  border: none;
+}
+
+/* Output Screen */
+.output {
+  min-height: 2.5em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: var(--bg-screen);
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-block: 0.5em;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operation {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* Buttons */
+button {
+  background-color: var(--key-bg-gray);
+  border-radius: 10px;
+  border: var(--key-shadow-blue);
+  box-shadow: 0 3px var(--key-shadow-gray);
+}
+
+.delete {
+  font-size: var(--fs-300);
+  color: var(--text-light);
+  background-color: var(--key-bg-blue);
+  box-shadow: 0 3px var(--key-shadow-blue);
+  /* grid-area: delete; */
+}
+
+.reset {
+  grid-area: reset;
+  font-size: var(--fs-300);
+  color: var(--text-light);
+  background-color: var(--key-bg-blue);
+  box-shadow: 0 3px var(--key-shadow-blue);
+}
+
+.equal {
+  grid-area: equal;
+  font-size: var(--fs-300);
+  color: var(--text-light);
+  background-color: var(--key-bg-red);
+  box-shadow: 0 3px var(--key-shadow-red);
+}

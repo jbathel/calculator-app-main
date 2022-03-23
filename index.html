@@ -1,26 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+<html lang="en" data-theme="blue">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Spartan:wght@700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+    <title>Frontend Mentor | Calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="style-theme-1.css" />
+    <script src="./calculator.js" defer></script>
+    <script src="./themes.js" defer></script>
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="calculator wrapper">
+        <section class="header">
+          <!-- <div class="title"> -->
+          <h1 class="title">calc</h1>
+          <div class="theme">
+            <label for="theme">Theme</label>
+            <div class="theme-toggle">
+              <p id="p-1">1</p>
+              <p id="p-2">2</p>
+              <p id="p-3">3</p>
+              <input type="range" id="theme" name="theme" onchange="changeTheme(this.value)" min="1" max="3" step="1" />
+              <!-- </div> -->
+            </div>
+          </div>
+        </section>
+        <section class="display output">
+          <div data-previous-operation class="previous-operation"></div>
+          <div data-current-operation class="current-operation"></div>
+        </section>
+        <section class="input">
+          <div class="input-wrapper">
+            <button data-number>7</button>
+            <button data-number>8</button>
+            <button data-number>9</button>
+            <button class="delete" data-delete>DEL</button>
+            <button data-number>4</button>
+            <button data-number>5</button>
+            <button data-number>6</button>
+            <button data-operation>+</button>
+            <button data-number>1</button>
+            <button data-number>2</button>
+            <button data-number>3</button>
+            <button data-operation>-</button>
+            <button data-number>.</button>
+            <button data-number>0</button>
+            <button data-operation>/</button>
+            <button data-operation>x</button>
+            <button class="reset" data-reset>RESET</button>
+            <button class="equal" data-equals>=</button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Jessica Bathel</a>.</div>
+    </footer>
+  </body>
 </html>
